@@ -1,4 +1,4 @@
-const {dataone,datafashion, sportToyBaby, datapremium, sportToyBags, groceriesBeveragesCoffee, groceriesBeveragesTea, women, menData,sportdata, Home, pears }=require ("../dummy/dummy")
+const {dataone,datafashion, sportToyBaby, datapremium, sportToyBags, groceriesBeveragesCoffee, groceriesBeveragesTea, women, menData,sportdata, Home, pears, premiumApple }=require ("../dummy/dummy")
 
 const blogController=((req,res)=>{
     res.send(dataone)
@@ -63,10 +63,14 @@ const PearData=((req,res)=>{
     res.send(pears)
 })
 
+const AppleData=((req,res)=>{
+    res.send(premiumApple)
+})
 
 
 
 
 
 
-module.exports={blogController,sportBags,premium,sportbaby,fashiondata,BeverageCoffee,BeverageTea,womenData,men,datadsport,HomeData,PearData}
+
+module.exports={blogController,sportBags,premium,sportbaby,fashiondata,BeverageCoffee,BeverageTea,womenData,men,datadsport,HomeData,PearData,AppleData}
