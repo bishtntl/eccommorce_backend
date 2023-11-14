@@ -13,9 +13,6 @@ const userSchema=mongoose.Schema({
 })
 
 
-
-
-
 const UserLogin=mongoose.model("userLogin",userSchema)
 
 module.exports=UserLogin

@@ -317,8 +317,9 @@ para:"Fashion comes calling with chic women’s wear brand – Fig. From cool so
 
    {
        id:32,
-       // category:'premium',
+       category:'premium',
        name:"Curate",
+       price:250,
        heading:"Coconut Tender Premium Indian 3 Pc (Approx 4.48 kg - 5.22 kg)",
        image:"https://www.jiomart.com/images/product/original/599991275/coconut-tender-premium-indian-3-pc-approx-300-ml-350-ml-per-nut-product-images-o599991275-p591189405-0-202303031318.jpg?im=Resize=(420,420)",
        images:'https://www.jiomart.com/images/category/6047/premium-fruits-20220911.jpeg',

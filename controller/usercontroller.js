@@ -1,31 +1,60 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const UserLogin = require("../model/usermodel");
+// const UserLogin = require("../model/usermodel");
 const UserRegister = require("../model/registermodel");
 const sycret_key = "bsb";
 
 const register = async (req, res) => {
   const data =await req.body;
+
+
+
   console.log(data);
 
   // Use await to wait for the promise to resolve
   const details = await UserRegister.findOne({ email: `${data.email}` });
-
+  // `${data.email}`
   if (details) {
     res.send({ msg: "user already registered with this email" });
-
-
   }
+
+
+  const newuser= new UserRegister({
+     
+
+  })
 
   const hashpassword = bcrypt.hashSync(data.password, 10);
   console.log(hashpassword);
+
+
+//   userSchema.pre("save", async function (next) {
+//     try {
+//         const salt = await bcrypt.genSalt(10);
+//         const hashedPassword = await bcrypt.hash(this.password, salt);
+//         this.password = hashedPassword;
+//         next();
+//     } catch (error) {
+//         next(error);
+//     }
+// });
+
+
+
+
+
+
+
+
+
+
 
   const tempObj = {
     email: data.email,
     password: hashpassword,
   };
 
-  const response = UserRegister.create(tempObj);
+  const response =await UserRegister.create([tempObj]);
   console.log(response);
 
   const token = jwt.sign({ email: data.email }, sycret_key, { expiresIn: "1y" });
@@ -37,13 +66,31 @@ const register = async (req, res) => {
   });
 };
 
+
+
+  // if(UserRegister.email===data.email){
+  //     const registerall=new UserRegister({
+  //       name: req.body.name,
+  //       email:req.body.email,
+  //       mobilno:req.body.mobilno,
+  //       password:req.body.password
+  //     })
+
+      // const registered=await registerall.save()
+      // res.status(201).render
+      // console.log(registered)
+
+  
+
+
+  
+
+
+
+
 const login = (req, res) => {
   const data = req.body;
-  const details = UserRegister.findOne((item) => {
-    if (item.email === data.email) {
-      return item;
-    }
-  });
+  const details = UserRegister.findOne({email:`${data.email}`});
 
   if (details) {
     const validate = bcrypt.compareSync(data.password, details.password);
@@ -63,5 +110,9 @@ const login = (req, res) => {
     msg: "email wrong",
   });
 };
+
+// const home=((req,res)=>{
+//   res.send("this is home page")
+// })
 
 module.exports = { login, register };

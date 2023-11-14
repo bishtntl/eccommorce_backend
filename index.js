@@ -5,7 +5,7 @@ const app=express()
 const cors=require("cors")
 const  connection  = require("./config/db")
 const routeone = require("./route/userrouter")
-const port=4040
+const port=process.env.PORT  || 5050
 
 
 app.use(cors({
@@ -13,6 +13,7 @@ app.use(cors({
 }))
 
 app.use(express.json())
+// app.use(express.urlencoded({extended:false}))
 app.use("/api",routeone)
 app.use("/api",productRoute)
 app.use("/api",blogRouter)
