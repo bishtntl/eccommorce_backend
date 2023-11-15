@@ -18,6 +18,6 @@ const productSchema=mongoose.Schema(
 
   
 )
-const productColletion=mongoose.model("productColletion",productSchema)
+const productColletion=mongoose.model("productColletion_All",productSchema)
 
 module.exports= productColletion;

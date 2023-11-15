@@ -1,4 +1,4 @@
-const { DataAll } = require("../dummy/dummy");
+const DataAll  = require("../dummy/dummy");
 const productColletion = require("../model/productmodel");
 const createData = async (req, res) => {
   const response = await productColletion.create(DataAll);

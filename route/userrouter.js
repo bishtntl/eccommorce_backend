@@ -5,7 +5,7 @@ const auth =require('../middleware/auth')
 
 const routeone=require("express").Router()
 // routeone.get("/h",auth,home)
-routeone.post("/register",register)
+routeone.post("/register",auth,register)
 routeone.post("/login",login)
 
 

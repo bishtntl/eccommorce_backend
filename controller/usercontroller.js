@@ -88,24 +88,30 @@ const register = async (req, res) => {
 
 
 
-const login = (req, res) => {
+const login = async(req, res) => {
   const data = req.body;
-  const details = UserRegister.findOne({email:`${data.email}`});
+  if(req.body.password && req.body.email){
+    const details =await UserRegister.findOne({email:`${data.email}`});
 
-  if (details) {
-    const validate = bcrypt.compareSync(data.password, details.password);
-    if (validate) {
-      const token = jwt.sign({ email: data.email }, sycret_key, { expiresIn: "1y" });
-      return res.send({
-        msg: "user logged in successfully",
-        token: token,
-      });
-    } else {
-      return res.send({
-        msg: "password is wrong",
-      });
+    if (details) {
+      const validate = bcrypt.compareSync(data.password, details.password);
+      if (validate) {
+        const token = jwt.sign({ email: data.email }, sycret_key, { expiresIn: "1y" });
+        return res.send({
+          msg: "user logged in successfully",
+          token: token,
+        });
+      } else {
+
+        return res.send({
+          msg: "password is wrong",
+        });
+      }
     }
   }
+ 
+
+  
   return res.send({
     msg: "email wrong",
   });
