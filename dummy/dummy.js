@@ -165,6 +165,7 @@ const DataAll = [
     price: 1000,
     name: "KedarFab",
     heading: "Kedar Fab Girls Silk Embroidery Lehenga Choli With Blouse",
+    
   },
   {
     id: 17,
